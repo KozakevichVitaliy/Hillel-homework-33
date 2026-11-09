@@ -1,0 +1,57 @@
+<!-- <li class="cart-item">
+  <div class="cart-item__image">image</div>
+  <div class="cart-item__info">
+    <h3 class="cart-item__title">title</h3>
+    <span class="cart-iten__price">price</span>
+  </div>
+  <div class="qty">
+    <span class="qty__value">qty</span>
+  </div>
+  <button class="btn btn--icon" data-id="id">X</button>
+</li> -->
+
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Магазин — Кошик</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+
+<body>
+  <header class="header">
+    <a href="index.html" class="logo">🛍️ MiniShop</a>
+    <nav class="nav">
+      <a href="index.html" class="nav__link">Продукти</a>
+      <a href="cart.html" class="nav__link nav__link--active">
+        Кошик <span class="badge" data-cart-count>0</span>
+      </a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <h1 class="page-title">Кошик</h1>
+
+    <div class="cart" id="cart">
+      <ul class="cart__list" id="cart-list"></ul>
+
+      <aside class="summary" id="summary" hidden>
+        <h2 class="summary__title">Разом</h2>
+        <div class="summary__row">
+          <span>Товарів:</span>
+          <strong id="total-count">0</strong>
+        </div>
+        <div class="summary__row summary__row--total">
+          <span>Сума:</span>
+          <strong id="total-price">0</strong>
+        </div>
+        <button class="btn btn--danger btn--block" id="clear-cart">Очистити кошик</button>
+      </aside>
+    </div>
+  </main>
+
+</body>
+
+</html>
