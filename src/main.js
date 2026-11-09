@@ -1,9 +1,38 @@
+const state = {
+  products: [],
+  cart: []
+}
 const productsGrid = document.querySelector('#products');
 
 productsGrid.addEventListener("click", (event) => {
   if (event.target.closest("[data-id]")) {
-    console.log('fdfds');
-    
+    const products = JSON.parse(localStorage.getItem("cart")) ?? [];
+    const existProduct = products.find(
+      (p) => p.id === Number(event.target.dataset.id)
+    );
+
+    if (existProduct) {
+      const items = products.map(product => {
+        if (product.id === Number(event.target.dataset.id)) {
+          return {
+            ...product,
+            qty: product.qty + 1
+          };
+        } else {
+          return product;
+        }
+      })
+      localStorage.setItem(
+        "cart", 
+        JSON.stringify(items)
+      )
+    } else {
+      const product = state.products.find((p) => p.id === Number(event.target.dataset.id));
+      localStorage.setItem(
+        "cart", 
+        JSON.stringify([...products, { ...product, qty: 1 }])
+      )
+    }
   }
 })
 
@@ -40,6 +69,7 @@ const load = async () => {
     createSkeleton();
     const data = await fetch("https://6ace3a4af338359cf1c34b0b.mockapi.io/products");
     const products = await data.json();
+    state.products = products;
     const markup = products.map(createProductCard).join("")
     productsGrid.innerHTML = markup;
   } catch (error) {
